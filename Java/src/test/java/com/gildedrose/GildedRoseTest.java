@@ -19,4 +19,16 @@ void normalItem_decreasesSellInAndQualityByOne() {
     assertEquals(19, items[0].quality);
 }
 
+@Test
+void normalItem_afterSellDate_degradesQualityTwiceAsFast() {
+    Item[] items = new Item[] {
+        new Item("Elixir of the Mongoose", 0, 10) //sellIn =0 means sell by date has passed
+    };
+    GildedRose app = new GildedRose(items);
+
+    app.updateQuality();
+
+    assertEquals(-1, items[0].sellIn);
+    assertEquals(8, items[0].quality);
+}
 }
