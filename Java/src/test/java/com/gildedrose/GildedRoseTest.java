@@ -138,4 +138,33 @@ void backStagePass_QualityDropsToZeroAfterConcert() {
     assertEquals(-1, items[0].sellIn);//-1 implies day has passed. 0 is still day of 
     assertEquals(0, items[0].quality); //quality drops to 0 after concert
 }
+
+//NEW TEST FOR CONJURED ITEMS
+
+@Test
+void conjured_degradesTwiceAsFast() {
+    Item[] items = new Item[] {
+        new Item("Conjured Mana Cake", 3, 6)
+    };
+    GildedRose app = new GildedRose(items);
+
+    app.updateQuality();
+
+    assertEquals(2, items[0].sellIn);
+    assertEquals(4, items[0].quality);
+}
+
+@Test
+void conjured_afterSellDate_degradesTwiceAsFastAgain() {
+    Item[] items = new Item[] {
+        new Item("Conjured Mana Cake", 0, 6)
+    };
+    GildedRose app = new GildedRose(items);
+
+    app.updateQuality();
+
+    assertEquals(-1, items[0].sellIn);
+    assertEquals(2, items[0].quality);
+}
+
 }
