@@ -7,6 +7,8 @@ class GildedRose {
     private static final String AGED_BRIE = "Aged Brie";
     private static final String BACKSTAGE = "Backstage passes to a TAFKAL80ETC concert";
     private static final String SULFURAS = "Sulfuras, Hand of Ragnaros";
+    private static final String CONJURED = "Conjured";
+
 
     public GildedRose(Item[] items) {
         this.items = items;
@@ -23,6 +25,9 @@ class GildedRose {
                     if (!items[i].name.equals(SULFURAS)) {
                         // CHANGED: Used helper to decrease quality (removes duplication)
                         decreaseQuality(items[i]);
+                        if (isConjured(items[i])) {
+                            decreaseQuality(items[i]); // extra -1 (so total -2)for conjured items
+}
                     }
                 }
 
@@ -51,6 +56,9 @@ class GildedRose {
                         if (items[i].quality > 0) {
                             if (!items[i].name.equals(SULFURAS)) {
                                 decreaseQuality(items[i]);
+                                if (isConjured(items[i])) {
+                                    decreaseQuality(items[i]);
+}
                             }
                         }
                     } else {
@@ -77,4 +85,9 @@ class GildedRose {
             item.quality = item.quality - 1;
         }
     }
+//Method added for conjured items
+    private boolean isConjured(Item item) {
+    return item.name.startsWith(CONJURED);
+}
+
 }
