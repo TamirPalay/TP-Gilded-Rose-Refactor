@@ -14,7 +14,21 @@ From the `java` directory on Windows:
 On Mac/Linux:
         ./gradlew test
 
+## Test-first process
 
+I followed a test-first (characterization) approach to lock existing behavior
+before refactoring or adding new features.
+
+Tests were added incrementally in the following order:
+
+1. **normalItem_decreasesSellInAndQualityByOne**
+   - Verifies that a standard item decreases sellIn and quality by 1 per day.
+
+2. **normalItem_afterSellDate_degradesQualityTwiceAsFast**
+   - Verifies that quality degrades twice as fast once the sell date has passed.
+
+
+   
 # Gilded Rose starting position in Java
 
 ## Run the TextTest Fixture from Command-Line
