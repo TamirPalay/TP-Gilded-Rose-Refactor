@@ -31,4 +31,17 @@ void normalItem_afterSellDate_degradesQualityTwiceAsFast() {
     assertEquals(-1, items[0].sellIn);
     assertEquals(8, items[0].quality);
 }
+
+@Test
+void qualityNeverNegative() {
+    Item[] items = new Item[] {
+        new Item("Elixir of the Mongoose", 5, 0)
+    };
+    GildedRose app = new GildedRose(items);
+
+    app.updateQuality();
+
+    assertEquals(4, items[0].sellIn);
+    assertEquals(0, items[0].quality);//quality remains 0 and should not go negative
+}
 }
