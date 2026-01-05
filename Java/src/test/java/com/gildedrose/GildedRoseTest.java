@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.beans.Transient;
+
 class GildedRoseTest {
 
 @Test
@@ -44,4 +46,32 @@ void qualityNeverNegative() {
     assertEquals(4, items[0].sellIn);
     assertEquals(0, items[0].quality);//quality remains 0 and should not go negative
 }
+
+@Test
+void agedBrie_increasesQualityOverTime() {
+    Item[] items = new Item[] {
+        new Item("Aged Brie", 2, 0)
+    };
+    GildedRose app = new GildedRose(items);
+
+    app.updateQuality();
+
+    assertEquals(1, items[0].sellIn);
+    assertEquals(1, items[0].quality);
+}
+
+@Test
+void qualityNeverAboveFifty() {
+    Item[] items = new Item[] {
+        new Item("Aged Brie", 2, 50)
+    };
+    GildedRose app = new GildedRose(items);
+
+    app.updateQuality();
+
+    assertEquals(1, items[0].sellIn);
+    assertEquals(50, items[0].quality); //quality remains 50 and should not go above 50
+
+}
+
 }
