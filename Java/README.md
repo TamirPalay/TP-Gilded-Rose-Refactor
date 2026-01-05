@@ -18,6 +18,7 @@ From the `Java` directory:
 
 **Mac/Linux**
 ./gradlew test
+---
 
 ## Test-first process and coverage
 
