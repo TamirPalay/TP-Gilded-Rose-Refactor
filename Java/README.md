@@ -1,3 +1,20 @@
+
+# My Gilded Rose Refactoring Solution (Java)
+
+This repository contains my solution to the **Gilded Rose Refactoring Kata (Java)**.
+
+### Approach
+- Added characterization tests to lock existing behavior
+- Refactored the code in small, safe steps
+- Implemented the new **Conjured items** feature last
+
+### How to run tests
+From the `java` directory on Windows:
+        .\gradlew.bat test
+On Mac/Linux:
+        ./gradlew test
+
+
 # Gilded Rose starting position in Java
 
 ## Run the TextTest Fixture from Command-Line
