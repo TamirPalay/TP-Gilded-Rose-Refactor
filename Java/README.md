@@ -14,18 +14,52 @@ From the `java` directory on Windows:
 On Mac/Linux:
         ./gradlew test
 
-## Test-first process
+## Test-first process and coverage
 
-I followed a test-first (characterization) approach to lock existing behavior
-before refactoring or adding new features.
+I followed a test-first (characterization) approach, adding tests in the same
+order as the requirements listed in the Gilded Rose specification.
+Each test focuses on a single business rule and was added before refactoring
+or introducing new functionality.
 
-Tests were added incrementally in the following order:
+### Tests added (in requirement order)
 
-1. **normalItem_decreasesSellInAndQualityByOne**
-   - Verifies that a standard item decreases sellIn and quality by 1 per day.
+1. **normalItem_decreasesSellInAndQualityByOne**  
+   Verifies that a normal item decreases both `sellIn` and `quality` by 1 per day.
 
-2. **normalItem_afterSellDate_degradesQualityTwiceAsFast**
-   - Verifies that quality degrades twice as fast once the sell date has passed.
+2. **normalItem_afterSellDate_degradesQualityTwiceAsFast**  
+   Verifies that once the sell-by date has passed, a normal item’s quality
+   degrades twice as fast.
+
+3. **qualityNeverNegative**  
+   Ensures that an item’s quality never drops below 0.
+
+4. **agedBrie_increasesQualityOverTime**  
+   Verifies that *Aged Brie* increases in quality as it gets older.
+
+5. **qualityNeverAboveFifty**  
+   Ensures that an item’s quality never exceeds 50.
+
+6. **sulfuras_neverChanges**  
+   Verifies that *Sulfuras* never changes in quality or sell-in value
+   (and retains a quality of 80).
+
+7. **backStagePass_IncreaseQualityWhenMoreThan10Days**  
+   Verifies that *Backstage passes* increase in quality by 1 when more than
+   10 days remain before the concert.
+
+8. **backStagePass_IncreaseQualityWhen10DaysOrLess**  
+   Verifies that *Backstage passes* increase in quality by 2 when 10 days or less
+   remain before the concert.
+
+9. **backStagePass_IncreaseQualityWhen5DaysOrLess**  
+   Verifies that *Backstage passes* increase in quality by 3 when 5 days or less
+   remain before the concert.
+
+10. **backStagePass_QualityDropsToZeroAfterConcert**  
+    Verifies that *Backstage passes* drop to a quality of 0 after the concert date.
+
+This test suite provides clear coverage of all core business rules and serves as
+a safety net for refactoring and adding new features.
 
 
    
