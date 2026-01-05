@@ -87,6 +87,55 @@ void sulfuras_neverChanges() {
     assertEquals(80, items[0].quality); //Sulfuras quality and sellIn never change
 }
 
+/*"Backstage passes", like aged brie, increases in Quality as its SellIn value approaches;
+Quality increases by 2 when there are 10 days or less and by 3 when there are 5 days or less but
+Quality drops to 0 after the concert */
+@Test
+void backStagePass_IncreaseQualityWhenMoreThan10Days() {
+    Item[] items = new Item[] {
+        new Item("Backstage passes to a TAFKAL80ETC concert", 15, 20)
+    };
+    GildedRose app = new GildedRose(items);
 
+    app.updateQuality();
 
+    assertEquals(14, items[0].sellIn);
+    assertEquals(21, items[0].quality); //quality increases by 1 when more than 10 days left
+}
+@Test
+void backStagePass_IncreaseQualityWhen10DaysOrLess() {
+    Item[] items = new Item[] {
+        new Item("Backstage passes to a TAFKAL80ETC concert", 10, 20)
+    };
+    GildedRose app = new GildedRose(items);
+
+    app.updateQuality();
+
+    assertEquals(9, items[0].sellIn);
+    assertEquals(22, items[0].quality); //quality increases by 2 when 3<days<=10
+}
+@Test
+void backStagePass_IncreaseQualityWhen5DaysOrLess() {
+    Item[] items = new Item[] {
+        new Item("Backstage passes to a TAFKAL80ETC concert", 5, 20)
+    };
+    GildedRose app = new GildedRose(items);
+
+    app.updateQuality();
+
+    assertEquals(4, items[0].sellIn);
+    assertEquals(23, items[0].quality); //quality increases by 3 when 0<days<=5
+}
+@Test
+void backStagePass_QualityDropsToZeroAfterConcert() {
+    Item[] items = new Item[] {
+        new Item("Backstage passes to a TAFKAL80ETC concert", 0, 20)
+    };
+    GildedRose app = new GildedRose(items);
+
+    app.updateQuality();
+
+    assertEquals(-1, items[0].sellIn);//-1 implies day has passed. 0 is still day of 
+    assertEquals(0, items[0].quality); //quality drops to 0 after concert
+}
 }
