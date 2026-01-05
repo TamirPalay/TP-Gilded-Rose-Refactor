@@ -6,13 +6,18 @@ This repository contains my solution to the **Gilded Rose Refactoring Kata Imple
 ### Approach
 - Added characterization tests to lock existing behavior
 - Refactored the code in small, safe steps
-- Implemented the new **Conjured items** feature last
+- Implemented the new Conjured items feature last
 
 ### How to run tests
+
 From the `Java` directory:
-        .\gradlew.bat test
-On Mac/Linux:
-        ./gradlew test
+
+**Windows**
+```bash
+.\gradlew.bat test
+
+**Mac/Linux**
+./gradlew test
 
 ## Test-first process and coverage
 
