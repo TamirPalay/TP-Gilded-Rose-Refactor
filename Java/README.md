@@ -1,3 +1,19 @@
+## Test-first process
+
+I followed a test-first (characterization) approach to lock existing behavior
+before refactoring or adding new features.
+
+Tests were added in the following order:
+
+1. **Normal item degradation**
+   - Verifies that sellIn and quality decrease by 1 for a standard item.
+
+2. **Normal item after sell date**
+   - Verifies that quality degrades twice as fast once the sell date has passed.
+
+
+
+
 # Gilded Rose starting position in Java
 
 ## Run the TextTest Fixture from Command-Line
