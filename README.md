@@ -1,3 +1,21 @@
+## My solution (Java)
+
+This fork contains my solution to the Gilded Rose Refactoring Kata.
+All implementation, tests, and refactoring work were done in the **Java** folder.
+
+➡️ See [`Java/README.md`](Java/README.md) for:
+- How to run the Java tests
+- Test-first process and coverage
+- Refactoring notes
+- Conjured items implementation
+
+
+
+##Everything below this line is the original READMe from https://github.com/emilybache/GildedRose-Refactoring-Kata/blob/main/README.md#how-to-use-this-kata
+
+
+
+
 _Support this and all my katas via [Patreon](https://www.patreon.com/EmilyBache)_
 
 # Gilded Rose Refactoring Kata
